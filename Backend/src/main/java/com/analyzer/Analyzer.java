@@ -4,6 +4,7 @@ import com.analyzer.data.ResponseData;
 import com.analyzer.data.inner.HtmlVersion;
 import com.analyzer.data.inner.PageTitle;
 import com.analyzer.workers.HeadingWorker;
+import com.analyzer.workers.LinksWorker;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.DocumentType;
@@ -25,6 +26,7 @@ public class Analyzer {
 			calculateHtmlVersion(doc);
 			calculatePageTitle(doc);
 			responseData.setHeading(HeadingWorker.getData(doc));
+			responseData.setLinks(LinksWorker.getData(doc));
 			System.out.println("bla");
 		} catch (IOException e) {
 			e.printStackTrace();

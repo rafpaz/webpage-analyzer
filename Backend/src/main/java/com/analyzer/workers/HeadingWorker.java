@@ -5,7 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-public class HeadingWorker {
+public class HeadingWorker{
 	private static final String _HeadingQuery = "h1, h2, h3, h4, h5, h6";
 
 	public static Heading getData(Document doc){
