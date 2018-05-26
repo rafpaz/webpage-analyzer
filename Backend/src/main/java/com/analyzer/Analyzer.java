@@ -2,6 +2,7 @@ package com.analyzer;
 
 import com.analyzer.data.ResponseData;
 import com.analyzer.data.inner.HtmlVersion;
+import com.analyzer.data.inner.PageTitle;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.DocumentType;
@@ -21,11 +22,17 @@ public class Analyzer {
 		try {
 			Document doc = Jsoup.connect(url).get();
 			calculateHtmlVersion(doc);
+			calculatePageTitle(doc);
 			System.out.println("bla");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return null;
+	}
+
+	private static void calculatePageTitle(Document doc) {
+		String pageTitle = doc.getElementsByTag("title").text();
+		responseData.setPageTitle(new PageTitle(pageTitle));
 	}
 
 	private static void init(){
