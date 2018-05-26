@@ -3,6 +3,7 @@ package com.analyzer;
 import com.analyzer.data.ResponseData;
 import com.analyzer.data.inner.HtmlVersion;
 import com.analyzer.data.inner.PageTitle;
+import com.analyzer.workers.HeadingWorker;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.DocumentType;
@@ -23,6 +24,7 @@ public class Analyzer {
 			Document doc = Jsoup.connect(url).get();
 			calculateHtmlVersion(doc);
 			calculatePageTitle(doc);
+			responseData.setHeading(HeadingWorker.getData(doc));
 			System.out.println("bla");
 		} catch (IOException e) {
 			e.printStackTrace();
