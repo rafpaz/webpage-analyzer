@@ -1,8 +1,10 @@
 package com.analyzer.data;
 
-public class ResponseData {
-	String htmlVersion;
+import com.analyzer.data.inner.HtmlVersion;
 
-	public String getHtmlVersion() { return htmlVersion; }
-	public void setHtmlVersion(String htmlVersion) { this.htmlVersion = htmlVersion; }
+public class ResponseData {
+	HtmlVersion htmlVersion;
+
+	public HtmlVersion getHtmlVersion() { return htmlVersion; }
+	public void setHtmlVersion(HtmlVersion htmlVersion) { this.htmlVersion = htmlVersion; }
 }
