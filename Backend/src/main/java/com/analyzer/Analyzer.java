@@ -19,7 +19,7 @@ public class Analyzer {
 	private static ResponseData responseData;
 
 
-	public static String analyze(String url){
+	public static ResponseData analyze(String url){
 		init();
 		try {
 			Document doc = Jsoup.connect(url).get();

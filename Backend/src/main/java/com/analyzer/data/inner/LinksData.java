@@ -1,10 +1,14 @@
 package com.analyzer.data.inner;
 
-import java.util.List;
+import java.util.Set;
 
 public class LinksData {
-	List<HyperMediaLink> linksData;
+	Set<HyperMediaLink> linksData;
 
-	public List<HyperMediaLink> getLinksData() { return linksData; }
-	public void setLinksData(List<HyperMediaLink> linksData) { this.linksData = linksData; }
+	public LinksData(Set<HyperMediaLink> hyperLinks) {
+		this.linksData = hyperLinks;
+	}
+
+	public Set<HyperMediaLink> getLinksData() { return linksData; }
+	public void setLinksData(Set<HyperMediaLink> linksData) { this.linksData = linksData; }
 }
