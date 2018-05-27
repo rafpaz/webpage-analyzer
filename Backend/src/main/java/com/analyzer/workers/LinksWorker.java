@@ -6,10 +6,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -27,26 +23,8 @@ public class LinksWorker {
 	}
 
 	private static LinksData buildLinkAvailability(Set<HyperMediaLink> hyperLinks) {
-		for (HyperMediaLink hyperLink : hyperLinks) {
-			try {
-				System.out.println("Checking availability for: " + hyperLink.getLink());
-				URL url = new URL(hyperLink.getLink());
-				HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-				if (connection.getResponseCode() == HttpURLConnection.HTTP_OK){
-					hyperLink.setAvailable(true);
-				} else {
-					hyperLink.setAvailable(false);
-					hyperLink.setMessage(connection.getResponseMessage());
-					System.out.println(hyperLink.getLink() + " is not available");
-					System.out.println("Error message: " + connection.getResponseMessage());
-				}
-			} catch (IOException e) {
-				System.out.println(hyperLink.getLink() + " is not available (exception)");
-				hyperLink.setAvailable(false);
-				hyperLink.setMessage("Exception on ping");
-				e.printStackTrace();
-			}
-		}
+		LinksAvailabilityWorker worker = new LinksAvailabilityWorker();
+		worker.updateLinksAvailability(hyperLinks);
 		return new LinksData(hyperLinks);
 	}
 
