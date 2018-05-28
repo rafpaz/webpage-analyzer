@@ -22,4 +22,7 @@ public class Heading extends ADisplayRow{
 		else
 			headingValues.put(heading, 1);
 	}
+
+	public Map<String, Integer> getHeadingValues() { return headingValues; }
+	public void setHeadingValues(Map<String, Integer> headingValues) { this.headingValues = headingValues; }
 }

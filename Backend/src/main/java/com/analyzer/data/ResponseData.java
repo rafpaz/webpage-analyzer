@@ -10,6 +10,7 @@ public class ResponseData {
 	PageTitle pageTitle;
 	Heading heading;
 	Links links;
+	boolean isLoginForm;
 
 	public HtmlVersion getHtmlVersion() { return htmlVersion; }
 	public void setHtmlVersion(HtmlVersion htmlVersion) { this.htmlVersion = htmlVersion; }
@@ -19,4 +20,6 @@ public class ResponseData {
 	public void setHeading(Heading heading) { this.heading = heading; }
 	public Links getLinks() { return links; }
 	public void setLinks(Links links) { this.links = links; }
+	public boolean isLoginForm() { return isLoginForm; }
+	public void setLoginForm(boolean loginForm) { isLoginForm = loginForm; }
 }

@@ -25,13 +25,18 @@ public class Analyzer {
 			Document doc = Jsoup.connect(url).get();
 			calculateHtmlVersion(doc);
 			calculatePageTitle(doc);
+			calculateIsLoginForm(doc);
 			responseData.setHeading(HeadingWorker.getData(doc));
 			responseData.setLinks(LinksWorker.getData(doc));
-			System.out.println("bla");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
+		return responseData;
+	}
+
+	private static void calculateIsLoginForm(Document doc) {
+		boolean isLogin = !doc.select("input[type=password]").isEmpty();
+		responseData.setLoginForm(isLogin);
 	}
 
 	private static void calculatePageTitle(Document doc) {
