@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 public class RestApiController {
 	private static final Logger logger = LoggerFactory.getLogger(RestApiController.class);
 
+	@CrossOrigin(origins = {"http://localhost:3000"})
 	@RequestMapping(value = "/analyze", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<?> analyzeWebpage(@RequestParam("url") String url){
