@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class MyTable extends Component {
+class LinksTable extends Component {
     constructor(props) {
         super(props);
     }
@@ -8,7 +8,7 @@ class MyTable extends Component {
     render() {
         return (
             <div>
-                <h3>{this.props.title}</h3>
+                <h3>Links Data</h3>
                 <div className="container">
                     <table className="table table-striped">
                         <thead>
@@ -19,18 +19,18 @@ class MyTable extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                        {this.props.isObject && Object.entries(this.props.data).map((item, i) => (
+                            {this.props.isObject && Object.entries(this.props.data).map((item, i) => (
                                     <tr key={i}>
-                                        {item.map((cell,j) => (
-                                            <td key={j}>{cell}</td>
+                                        {item.map(cell => (
+                                            <td>{cell}</td>
                                         ))}
                                     </tr>
                                 ))}
-                        {!this.props.isObject && this.props.data.linksData.map((item, i) => (
-                                <tr key={"links-" + i}>
-                                    <td key={"cell-" + i}>{item.link}</td>
-                                    <td>{item.available ? "Yes" : "No"}</td>
-                                    <td>{item.message}</td>
+                            {!this.props.isObject && this.props.map((item, i) => (
+                                <tr>
+                                    {Object.entries(item).map((cell) => (
+                                            <td>{item.cell}</td>
+                                    ))}
                                 </tr>
                             ))}
                         </tbody>
@@ -41,4 +41,4 @@ class MyTable extends Component {
     }
 }
 
-export default MyTable;
+export default LinksTable;
